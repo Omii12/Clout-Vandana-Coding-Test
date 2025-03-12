@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card with Hover Animation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%);
+      perspective: 1000px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 350px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+      transform-origin: center;
+      transform: perspective(1000px) rotateX(10deg) rotateY(0deg);
+      animation: float 3s infinite alternate ease-in-out;
+    }
+
+    .card:hover {
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes float {
+      0% {
+        transform: perspective(1000px) rotateX(5deg);
+      }
+
+      100% {
+        transform: perspective(1000px) rotateY(8deg);
+      }
+    }
+
+    .card-header {
+      height: 140px;
+      background: linear-gradient(135deg, #5f8ac7 0%, #632fb5 100%);
+      position: relative;
+    }
+
+    .profile-img {
+      position: absolute;
+      top: 110px;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 5px solid white;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .profile-img:hover {
+      transform: translate(-50%, -38%) scale(1.1);
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 60px 30px 30px;
+      text-align: center;
+    }
+
+    .name {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #333;
+    }
+
+    .username {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: #333;
+      text-decoration: none;
+      transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-5px);
+      background-color: #f0f0f0;
+      color: #0205e2;
+    }
+
+    .bio {
+      font-size: 14px;
+      line-height: 1.2;
+      color: #555;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+
+    .company {
+      font-size: 14px;
+      color: #777;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 400px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <div class="wave"></div>
+        <div class="profile-img">
+          <img src="https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg"
+            alt="Profile Picture">
+        </div>
+      </div>
+      <div class="card-body">
+        <h2 class="name">Om Yogesh Pande</h2>
+        <p class="username">@OmPande</p>
+        <div class="social-icons">
+          <a href="#" aria-label="GitHub"><i class="fab fa-github-square"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="bio">Passionate Web Developer skilled in HTML, CSS, JavaScript, and SQL, focused on building dynamic
+          and user-friendly applications.</p>
+        <p class="company">Web-Developer at CloudVandana</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
