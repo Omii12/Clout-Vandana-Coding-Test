@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery Slider</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926');
+            background-size: cover;
+            
+
+            /* background: linear-gradient(135deg, #fd9f70, #fd6e70); */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+
+        .slider-container {
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.395);
+            text-align: center;
+        }
+
+        .slider-container img {
+            width: 700px;
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #ff5e62;
+            color: white;
+            font-size: 18px;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.2s;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #3b76ff;
+            transform: scale(1.08);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <img id="slider" src="" alt="Image Slider">
+        <div class="buttons">
+            <button onclick="prevImage()">Previous</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const imageArray = [
+            'https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960',
+            'https://cdn.motor1.com/images/mgl/mrz1e/s3/coolest-cars-feature.jpg',
+            'https://qph.cf2.quoracdn.net/main-qimg-6c1a565cee8ce2d0e311419d290a8e33.webp',
+            'https://wallpapers.com/images/featured/4k-car-g6a4f0e15hkua5oa.jpg',
+            'https://wallpaper.dog/large/10948242.jpg',
+            'https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/topics/magazine-article-pool/2024/wallpaper/m-wallpaper/3-0-csl/bmw-3-0-csl-gallery-04.jpg'
+
+        ];
+
+        let currentImageIndex = 0;
+        const imageElement = document.getElementById('slider');
+
+        function updateImage() {
+            imageElement.style.opacity = 0;
+            setTimeout(() => {
+                imageElement.src = imageArray[currentImageIndex];
+                imageElement.style.opacity = 1;
+            }, 300);
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+            updateImage();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
+            updateImage();
+        }
+
+        updateImage();
+    </script>
+</body>
+
+</html>
